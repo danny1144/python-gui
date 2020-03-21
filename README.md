@@ -29,3 +29,8 @@ pyinstaller -F test04.py
 ### wxpython可视化界面开发
 - 界面开发工具
 wxFormBuilder
+
+### 已添加小功能
+
+- test03给目录下的文件批量用数字重命名
+- test04爬取蜂鸟网（佳能影像专区）图片至本地
