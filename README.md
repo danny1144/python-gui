@@ -7,7 +7,7 @@ conda search search_term 进行搜索
 ```
 
 ### wxPython依賴環境 
-- Python2.7
+- Python3.7
 ### 依赖包
 environment.yaml
 
