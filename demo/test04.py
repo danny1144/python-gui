@@ -10,11 +10,12 @@
 import wx
 import wx.xrc
 import os
-import urllib
+import urllib.request
 from bs4 import BeautifulSoup as bs
 ###########################################################################
 ## Class MyFrame
 ###########################################################################
+downloadDir = 'D:/downloadImg'
 
 
 class MyFrame(wx.Frame):
@@ -64,7 +65,7 @@ class MyFrame(wx.Frame):
         self.SetSizer(bSizer6)
         self.Layout()
         self.Centre(wx.BOTH)
-        self.n = len(os.listdir(u'C:/Users/root/Pictures/猎豹安全浏览器截图'))
+        self.n = len(os.listdir(downloadDir))
         self.m_staticText1.SetLabel(str(self.n))
         # Connect Events
         self.m_button1.Bind(wx.EVT_BUTTON, self.on_save)
@@ -75,16 +76,16 @@ class MyFrame(wx.Frame):
     # Virtual event handlers, overide them in your derived class
     def on_save(self, event):
         url = self.m_textCtrl1.GetValue()
-        request = urllib.urlopen(url).read()
+        request = urllib.request.urlopen(url).read()
         html = bs(request, 'html.parser')
         div_list = html.find_all('div', class_='img')
         for div in div_list:
             a = div.find('a')
             img = a.find('img')
             src = img.get('src').split('?')[0]
-            urllib.urlretrieve(
+            urllib.request.urlretrieve(
                 src,
-                u'C:/Users/root/Pictures/猎豹安全浏览器截图/{}.'.format(self.n + 1) +
+                downloadDir+'/{}.'.format(self.n + 1) +
                 src.split('.')[-1])
             self.m_staticText1.SetLabel(str(self.n + 1))
             self.n += 1
