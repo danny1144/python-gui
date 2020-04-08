@@ -1,0 +1,25 @@
+### 
+POST http://localhost:5000/todos  HTTP/1.1
+content-type: application/json
+
+{
+    "task":"see movie",
+    "count":1
+}
+ 
+### 
+GET http://localhost:5000/todos HTTP/1.1
+content-type: application/json
+
+### 
+PUT http://localhost:5000/todos/todo7  HTTP/1.1
+content-type: application/json
+
+{
+    "task1":"sing a song"
+}
+ 
+### 
+DELETE  http://localhost:5000/todos/todod7  HTTP/1.1
+content-type: application/json
+ 
